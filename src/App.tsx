@@ -5,14 +5,15 @@ import GenreList from "./components/GenreList";
 
 function App() {
   return (
-    <Grid margin="0 20px"
+    <Grid
+      margin="0 20px"
       templateAreas={{
         base: `"header" "main"`,
         lg: `"header header" "left-nav main"`,
       }}
       templateColumns={{
-        base: '1fr',
-        lg: '200px 1fr'
+        base: "1fr",
+        lg: "200px 1fr",
       }}
     >
       <GridItem area={"header"}>
