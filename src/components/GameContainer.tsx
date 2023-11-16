@@ -1,16 +1,16 @@
-import { Box } from '@chakra-ui/react'
-import { ReactNode } from 'react';
+import { Box } from "@chakra-ui/react";
+import { ReactNode } from "react";
 
 interface Props {
-    children: ReactNode;
+  children: ReactNode;
 }
 
-const GameContainer = ({children}: Props) => {
+const GameContainer = ({ children }: Props) => {
   return (
-    <Box width="300px" borderRadius={10} overflow="hidden">
-        {children}
+    <Box borderRadius={10} overflow="hidden">
+      {children}
     </Box>
-  )
-}
+  );
+};
 
-export default GameContainer
+export default GameContainer;
