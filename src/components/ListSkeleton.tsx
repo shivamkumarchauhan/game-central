@@ -11,7 +11,7 @@ const ListSkeleton = () => {
     <List>
       <ListItem paddingY="5px">
         <HStack>
-          <Skeleton height="30px" width="50px" />
+          <Skeleton height="30px" width="30px" />
           <SkeletonText
             width="180px"
             height="30px"

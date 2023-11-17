@@ -7,7 +7,7 @@ interface Props {
 
 const ListContainer = ({ children }: Props) => {
   return (
-    <Box borderRadius={10} overflow="hidden" width="150px">
+    <Box borderRadius={10} overflow="hidden" width="250px">
       {children}
     </Box>
   );
