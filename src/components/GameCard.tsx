@@ -21,7 +21,11 @@ const GameCard = ({ game }: Props) => {
     <Card>
       <Image
         src={getCroppedImageUrl(game.background_image)}
-        alt={game.background_image}
+        alt={
+          getCroppedImageUrl(game.background_image).match(/placeholder/)
+            ? "<a href='https://www.freepik.com/free-ai-image/3d-workstation-with-computer-peripheral-devices_60908692.htm#query=gaming%20laptop%20placeholder%20image&position=0&from_view=search&track=ais&uuid=3a5cd5f2-a5e5-404b-8a3e-e195f904fd4f'>Image By freepik</a>"
+            : game.background_image
+        }
       />
       <CardBody marginY={0.5}>
         <HStack display="flex" justifyContent="space-between">

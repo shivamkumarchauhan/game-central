@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <HStack justifyContent={"space-between"} padding="10px" margin="0 0 40px 0">
       <Image src={logo} alt="Game Central" boxSize="70px" />
-      <Search />
+      <Search onSearch={(item) => console.log(item)} />
       <ColorModeSwitch />
     </HStack>
   );

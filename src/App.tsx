@@ -1,16 +1,21 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import Header from "./components/Header";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { Genres } from "./hooks/useGenres";
 import PlatformFilter from "./components/PlatformFilter";
 import { Platform } from "./hooks/useGames";
+import SortFilter from "./components/SortFilter";
 
 export interface Query {
   genre: Genres | null;
   platform: Platform | null;
+  sortType: string;
+  searchText: string;
 }
+
+const MyContext = createContext<Query>({} as Query);
 
 function App() {
   // const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
@@ -33,7 +38,9 @@ function App() {
       }}
     >
       <GridItem area={"header"}>
-        <Header />
+        <MyContext.Provider value={{ ...query, searchText: query.searchText }}>
+          <Header />
+        </MyContext.Provider>
       </GridItem>
       <Show above="lg">
         <GridItem>
@@ -44,10 +51,16 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area={"main"}>
-        <PlatformFilter
-          onSelect={(platform) => setQuery({ ...query, platform })}
-          selectedPlatform={query.platform}
-        />
+        <HStack spacing={4} marginBottom={8}>
+          <PlatformFilter
+            onSelect={(platform) => setQuery({ ...query, platform })}
+            selectedPlatform={query.platform}
+          />
+          <SortFilter
+            onClickItem={(sortType) => setQuery({ ...query, sortType })}
+            sortType={query.sortType}
+          />
+        </HStack>
         <GameGrid query={query} />
       </GridItem>
     </Grid>
@@ -55,3 +68,4 @@ function App() {
 }
 
 export default App;
+export const useMyContext = () => useContext(MyContext)!;

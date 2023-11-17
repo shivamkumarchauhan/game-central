@@ -1,6 +1,5 @@
 import { Query } from '../App';
 import useData from './useData';
-import { Genres } from './useGenres';
 
 export interface Platform {
   id: number;
@@ -22,7 +21,8 @@ const useGames = (query: Query) =>
 useData<Game>('/games', {
   params: {
     genres: query.genre?.id,
-    parent_platforms: query.platform?.id
+    parent_platforms: query.platform?.id,
+    ordering: query.sortType
   }
 }, [query]);
 

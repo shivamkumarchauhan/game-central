@@ -1,14 +1,28 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 
-const Search = () => {
+interface Props {
+  onSearch: (searchText: string) => void;
+}
+
+const Search = ({ onSearch }: Props) => {
+  const ref = useRef<HTMLInputElement>(null);
+
   return (
-    <InputGroup>
-      <InputLeftElement pointerEvents="none">
-        <FaSearch />
-      </InputLeftElement>
-      <Input type="text" placeholder="Search Games" />
-    </InputGroup>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        if (ref.current) onSearch(ref.current.value);
+      }}
+    >
+      <InputGroup>
+        <InputLeftElement>
+          <FaSearch />
+        </InputLeftElement>
+        <Input ref={ref} type="text" placeholder="Search Games" />
+      </InputGroup>
+    </form>
   );
 };
 
