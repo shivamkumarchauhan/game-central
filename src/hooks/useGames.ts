@@ -15,6 +15,7 @@ export interface Game {
     ratings_count: number;
     parent_platforms: {platform: Platform}[];
     metacritic: number;
+    rating_top: number
   }
   
 const useGames = (query: Query) =>
@@ -22,7 +23,8 @@ useData<Game>('/games', {
   params: {
     genres: query.genre?.id,
     parent_platforms: query.platform?.id,
-    ordering: query.sortType
+    ordering: query.sortType,
+    search: query.searchText
   }
 }, [query]);
 

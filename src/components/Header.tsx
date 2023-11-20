@@ -3,11 +3,15 @@ import logo from "../assets/OSKHFO0.jpg";
 import ColorModeSwitch from "./ColorModeSwitch";
 import Search from "./Search";
 
-const Header = () => {
+interface Props {
+  onSearch: (searchText: string) => void;
+}
+
+const Header = ({ onSearch }: Props) => {
   return (
-    <HStack justifyContent={"space-between"} padding="10px" margin="0 0 40px 0">
+    <HStack justifyContent={"space-between"} padding="10px" margin="0 0 20px 0">
       <Image src={logo} alt="Game Central" boxSize="70px" />
-      <Search onSearch={(item) => console.log(item)} />
+      <Search onSearch={onSearch} />
       <ColorModeSwitch />
     </HStack>
   );

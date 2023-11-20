@@ -11,15 +11,17 @@ const Search = ({ onSearch }: Props) => {
 
   return (
     <form
-      onSubmit={(event) => {
+      // onSubmit={(event) => {
+      //   event.preventDefault();
+      //   if (ref.current) onSearch(ref.current.value);
+      // }}
+      onChange={(event) => {
         event.preventDefault();
         if (ref.current) onSearch(ref.current.value);
       }}
     >
       <InputGroup>
-        <InputLeftElement>
-          <FaSearch />
-        </InputLeftElement>
+        <InputLeftElement children={<FaSearch />} />
         <Input ref={ref} type="text" placeholder="Search Games" />
       </InputGroup>
     </form>
