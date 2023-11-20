@@ -3,10 +3,8 @@ import {
   CardBody,
   Stack,
   Heading,
-  Text,
   Image,
   HStack,
-  Flex,
 } from "@chakra-ui/react";
 import { Game } from "../hooks/useGames";
 import PlatformIconsList from "./PlatformIconsList";
